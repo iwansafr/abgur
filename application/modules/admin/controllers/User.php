@@ -24,19 +24,23 @@ class User extends CI_Controller
 
 	}
 
-	public function edit()
+	public function edit($id = 0)
 	{
 		$this->data['esg']->status = array();
 		if(!empty($this->input->post()))
 		{
-			$this->data['esg']->status = $this->user_model->edit();
+			$this->data['esg']->status = $this->user_model->edit($id);
 			// _validate($this->input->post());
+		}
+		if(!empty($id))
+		{
+			$this->user_model->setDetail($id);
 		}
 		$this->data['esg']->field = $this->user_model->field();
 		$this->load->view('dashboard', $this->data);
 	}
 
-	public function detail($id)
+	public function detail($id = 0)
 	{
 		$data = array();
 		if(!empty($id))
@@ -46,13 +50,13 @@ class User extends CI_Controller
 		echo json_encode($data);
 	}
 
-	public function ajax_edit()
+	public function ajax_edit($id = 0)
 	{
 		$data = array('status'=>FALSE);
 		if(!empty($this->input->post()))
 		{
-			_validate($this->input->post(), 'image');
-			$data = $this->user_model->edit();
+			_validate($this->input->post(), array('image','id'));
+			$data = $this->user_model->edit($id);
 			if($data['alert'] == 'success')
 			{
 				$data = array('status'=>TRUE);

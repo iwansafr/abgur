@@ -10,6 +10,7 @@ $(document).ready(function(){
 	esg.setTable(table);
 	esg.setUrl(_URL+'admin/user/ajax_edit');
 	esg.setForm($('#form')[0]);
+
 	$('#add_user').on('click', function(){
 		$('#modal_form').modal('show'); // show bootstrap modal
 	  $('.modal-title').text('Add User'); // Set Title to Bootstrap modal title
@@ -19,20 +20,26 @@ $(document).ready(function(){
 	});
 	$('#reload_user').on('click',function(){
 		esg.reload_table();
-		console.log(esg.form);
 		// reload_table(table);
 	});
 	$('#btnSave').on('click',function(){
-		esg.save();
+		var id = $(esg.form).find('input[name=id]').val();
+		console.log(id);
+		esg.setUrl(_URL+'admin/user/ajax_edit/');
+		esg.save(id);
 		// save(_URL+'admin/user/ajax_edit', table, $('#form')[0]);
 	});
 
 	$(document).on('click','.delete-data',function(){
 		var id = $(this).closest('tr').find('.data-check').val();
-		delete_data('admin/user/delete', table, id);
+		// esg.delete_data(id);
+		esg.setUrl(_URL+'admin/user/delete');
+		esg.delete_data(id);
 	});
 	$(document).on('click','.edit-data',function(){
 		var id = $(this).closest('tr').find('.data-check').val();
-		detail_data('admin/user/detail', table, $('#form')[0], id);
+		// detail_data('admin/user/detail', table, $('#form')[0], id);
+		esg.setUrl(_URL+'admin/user/detail');
+		esg.detail_data(id);
 	});
 });

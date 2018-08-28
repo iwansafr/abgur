@@ -26,7 +26,7 @@
         {
           alert($esg->status['alert'],$esg->status['message']);
         }
-        echo form_open_multipart(base_url('admin/user/edit'),array(
+        echo form_open_multipart('',array(
           'data-parsley-validate'=>'data-parsley-validate',
           'class'=> 'form-horizontal form-label-left'
         ));

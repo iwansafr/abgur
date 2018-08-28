@@ -42,7 +42,7 @@ function form($field = array(), $type = 'full')
 					'name'  => $key,
 					'id'    => $key,
 					'class' => $value['type']== 'checkbox' ? '': 'form-control col-md-'.$size['input'].' col-xs-12',
-					'value' => $value['type']== 'checkbox' ? $key: '',
+					'value' => $value['type']== 'checkbox' ? $key: @$value['value'],
 				);
 				if(!empty($value['attribute']))
 				{
@@ -68,7 +68,7 @@ function form($field = array(), $type = 'full')
 
 }
 
-function _validate($input = array(), $except = '')
+function _validate($input = array(), $except = array())
 {
 	if(is_array($input) && !empty($input))
 	{
@@ -78,7 +78,7 @@ function _validate($input = array(), $except = '')
 		$data['status'] = TRUE;
 		foreach ($input as $key => $value)
 		{
-			if($key != $except)
+			if(!in_array($key,$except))
 			{
 				if($input[$key] == '')
 				{
@@ -92,7 +92,7 @@ function _validate($input = array(), $except = '')
 		{
 			foreach ($_FILES as $key => $value)
 			{
-				if($key != $except)
+				if(!in_array($key,$except))
 				{
 					if(empty($_FILES[$key]['name']))
 					{
