@@ -80,7 +80,44 @@ class esg{
 			}
 		});
 	}
-
+	bulk_delete(){
+	  var list_id = [];
+	  $(".data-check:checked").each(function() {
+			list_id.push(this.value);
+	  });
+	  if(list_id.length > 0)
+	  {
+		if(confirm('Are you sure delete this '+list_id.length+' data?'))
+		{
+			var esg = this;
+			$.ajax({
+			type: "POST",
+			data: {id:list_id},
+			url: this.url,
+			dataType: "JSON",
+			success: function(data)
+			{
+			  if(data.status)
+			  {
+					esg.reload_table();
+			  }
+			  else
+			  {
+				alert('Failed.');
+			  }
+			},
+			error: function (jqXHR, textStatus, errorThrown)
+			{
+			  alert('Error deleting data');
+			}
+			});
+		}
+	  }
+	  else
+	  {
+		  alert('no data selected');
+	  }
+	}
 	save(id){
 	  $('#btnSave').text('saving...'); //change button text
 	  $('#btnSave').attr('disabled',true); //set button disable

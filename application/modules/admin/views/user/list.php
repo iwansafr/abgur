@@ -69,9 +69,9 @@
             	</div>
             </div>
             <div class="modal-footer">
-                <button type="button" id="btnSave" class="btn btn-primary">Save</button>
-                <button type="reset" class="btn btn-warning">Reset</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" id="btnSave" class="btn btn-primary"><i class="fa fa-save"></i> Save</button>
+                <button type="reset" id="btnReset" class="btn btn-warning"><i class="fa fa-undo"></i> Reset</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

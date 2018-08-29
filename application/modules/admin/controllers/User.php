@@ -15,7 +15,6 @@ class User extends CI_Controller
 		}
 		$this->load->model('user_model');
 		$this->load->helper('form');
-		$this->load->library('session');
 		$this->data['esg'] = $this->admin_model->esg();
 	}
 
