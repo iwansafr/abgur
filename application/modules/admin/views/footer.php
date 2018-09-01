@@ -19,6 +19,7 @@ if($esg->content != 'login/index')
 		case 'user/list':
 		case 'content/list':
 		case 'absensi/index':
+		case 'absensi/list':
 			?>
 			<!-- Datatables -->
 	    <script src="<?php echo base_url('assets') ?>/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -43,7 +44,7 @@ if($esg->content != 'login/index')
 	     ?>
 	     <script src="<?php echo mod_js('admin/user') ?>"></script>
 	     <?php
-	    }else if($esg->content == 'absensi/index'){
+	    }else if($esg->content == 'absensi/index' || $esg->content == 'absensi/list'){
 		    ?>
 				<script src="<?php echo mod_js('admin/absensi') ?>"></script>
 				<?php

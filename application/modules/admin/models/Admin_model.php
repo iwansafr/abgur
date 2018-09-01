@@ -30,6 +30,7 @@ class Admin_model extends CI_Model
 
 	public function left_menu()
 	{
+		$role = $this->session->userdata(base_url().'_logged_in')['role'];
 		$this->esg['left_menu'] = array(
 			'absensi' => array(
 				'icon' => 'fa-sign-in',
@@ -37,6 +38,10 @@ class Admin_model extends CI_Model
 					array(
 						'title' => 'absensi',
 						'link' => base_url('admin/absensi')
+					),
+					array(
+						'title' => 'list',
+						'link' => base_url('admin/absensi/list')
 					)
 				)
 			),
@@ -54,6 +59,9 @@ class Admin_model extends CI_Model
 				)
 			)
 		);
+		if($role>1){
+			$this->esg['left_menu'] = array();
+		}
 	}
 
 	public function do_upload($field = 'image', $module = 'admin')

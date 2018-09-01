@@ -22,6 +22,44 @@ class Absensi extends CI_Controller
 		$this->load->view('dashboard', $this->data);
 	}
 
+	public function list()
+	{
+		$this->load->view('dashboard', $this->data);
+	}
+
+	public function getAbsensi()
+	{
+		$draw   = intval($this->input->get("draw"));
+		$start  = intval($this->input->get("start"));
+		$length = intval($this->input->get("length"));
+
+		$content = $this->absensi_model->getAbsensi();
+
+		$data = array();
+		$i = 0;
+		$role = array('1'=>'admin','2'=>'guru');
+		$active = array('unactive','active');
+		foreach($content->result() as $r)
+		{
+			$data[] = array(
+				$r->name,
+				$r->kelas,
+				$r->jam_ke,
+				$r->created
+			);
+			$i++;
+		}
+
+		$output = array(
+				"draw"            => $draw,
+				"recordsTotal"    => $content->num_rows(),
+				"recordsFiltered" => $content->num_rows(),
+				"data"            => $data
+			);
+		echo json_encode($output);
+		exit();
+	}
+
 	public function ajax_edit()
 	{
 		$data = array('status'=>FALSE);
@@ -31,7 +69,7 @@ class Absensi extends CI_Controller
 			$data = $this->absensi_model->edit();
 			if($data['alert'] == 'success')
 			{
-				$data = array('status'=>TRUE);
+				$data = array('status'=>TRUE,'msg'=>'Anda berhasil Masuk');
 			}
 		}
 		echo json_encode($data);

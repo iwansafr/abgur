@@ -1,6 +1,16 @@
 $(document).ready(function(){
+	var table = $('#absensi_table').DataTable({
+		"pageLength" : 12,
+		"ajax":{
+			url: _URL+'admin/absensi/getAbsensi',
+			type: "GET"
+		},
+		dom: 'Bfrtip',
+		buttons: [ 'copy', 'csv', 'excel', 'pdf', 'print' ]
+	});
+
 	var esgs = new esg();
-	esgs.setTable('');
+	esgs.setTable(table);
 	esgs.setUrl(_URL+'admin/absensi/ajax_edit/');
 	esgs.setForm($('#form_absen')[0]);
 	var start = new Date();
@@ -13,10 +23,14 @@ $(document).ready(function(){
 		'11:00',
 		'12:15',
 		'13:00',
-		'13:45'
+		'13:45',
+		'14:30'
 	);
-
-	setInterval(function() {
+	$('#reload_absensi').on('click',function(){
+		esgs.reload_table();
+		// reload_table(table);
+	});
+	setInterval(function(){
 		var hour = new Date().getHours();
 		var minute = new Date().getMinutes();
 		var second = new Date().getSeconds();
@@ -34,6 +48,7 @@ $(document).ready(function(){
 			if(hour+':'+minute <= jadwal[i]){
 				$('.jamke').text('masuk jam ke '+i);
 				$('#jamke').val(i);
+				break;
 			}
 		}
 
@@ -44,5 +59,6 @@ $(document).ready(function(){
 		// var data = new FormData(esg.form);
 		// console.log(data);
 		esgs.save(0);
+		$('#form_absen').remove();
 	});
 });

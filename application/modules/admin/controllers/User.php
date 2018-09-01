@@ -13,7 +13,7 @@ class User extends CI_Controller
 			$curent_url = urlencode($curent_url);
 			redirect(base_url('admin/login?redirect_to='.$curent_url));
 		}
-		// $this->load->model('user_model');
+		$this->load->model('user_model');
 		$this->load->helper('form');
 		$this->data['esg'] = $this->admin_model->esg();
 	}

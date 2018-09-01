@@ -35,4 +35,10 @@ class Absensi_model extends CI_Model
 			return $output;
 		}
 	}
+	public function getAbsensi()
+	{
+		$q    = "SELECT a.*, u.name FROM absensi AS a LEFT JOIN user AS u ON(a.user_id=u.id) ORDER BY id DESC";
+		$data = $this->db->query($q);
+		return $data;
+	}
 }
