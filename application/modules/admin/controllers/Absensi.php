@@ -7,7 +7,8 @@ class Absensi extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('admin_model');
-		if(empty($this->session->userdata('user_logged_in')))
+		$this->load->model('absensi_model');
+		if(empty($this->session->userdata(base_url().'_logged_in')))
 		{
 			$curent_url = base_url($_SERVER['PATH_INFO']);
 			$curent_url = urlencode($curent_url);
@@ -19,5 +20,20 @@ class Absensi extends CI_Controller
 	public function index()
 	{
 		$this->load->view('dashboard', $this->data);
+	}
+
+	public function ajax_edit()
+	{
+		$data = array('status'=>FALSE);
+		if(!empty($this->input->post()))
+		{
+			_validate($this->input->post(), array('id'));
+			$data = $this->absensi_model->edit();
+			if($data['alert'] == 'success')
+			{
+				$data = array('status'=>TRUE);
+			}
+		}
+		echo json_encode($data);
 	}
 }

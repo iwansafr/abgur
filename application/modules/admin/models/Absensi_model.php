@@ -2,22 +2,37 @@
 
 class Absensi_model extends CI_Model
 {
+	var $table = 'absensi';
 	public function __construct()
 	{
 		$this->load->database();
 	}
 
-	public function getContent()
+	public function edit()
 	{
-		$this->db->select('id,title,image,hits,publish');
-		$data = $this->db->get('content')->result_array();
+		$data = $this->input->post();
+		if(!empty($data))
+		{
+			$is_exist = $this->db->query('SELECT id FROM '.$this->table.' WHERE jam_ke = ? AND user_id = ? AND kelas = ? LIMIT 1', array($data['jam_ke'], $data['user_id'], $data['kelas']))->row_array();
+			if(empty($is_exist))
+			{
+				$this->db->insert($this->table, $data);
+				$data['alert'] = 'success';
+				$data['message'] = 'Data Saved Successfully';
+			}else{
+				$data['alert'] = 'danger';
+				$data['message'] = 'Anda sudah masuk di jam ke '.@intval($data['jam_ke']);
+			}
+		}
 		return $data;
 	}
 
-	public function getContentJson()
+	public function getStatus($data)
 	{
-		$this->db->select('id,title,image,hits,publish');
-		$data = $this->db->get('content');
-		return $data;
+		if(is_array($data) & !empty($data))
+		{
+			$output = $this->db->query('SELECT * FROM '.$this->table.' WHERE jam_ke = ? AND user_id = ? ORDER BY id DESC LIMIT 1', array($data['jam_ke'], $data['user_id']))->row_array();
+			return $output;
+		}
 	}
 }

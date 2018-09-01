@@ -9,7 +9,7 @@ class Admin extends CI_Controller
 		$this->load->helper('esg_helper');
 		$this->load->helper('esg_form_helper');
 		$this->load->helper('esg_element_helper');
-		if(empty($this->session->userdata('user_logged_in')))
+		if(empty($this->session->userdata(base_url().'_logged_in')))
 		{
 			$curent_url = base_url($_SERVER['PATH_INFO']);
 			$curent_url = urlencode($curent_url);

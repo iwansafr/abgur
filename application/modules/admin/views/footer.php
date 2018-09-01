@@ -18,6 +18,7 @@ if($esg->content != 'login/index')
 	{
 		case 'user/list':
 		case 'content/list':
+		case 'absensi/index':
 			?>
 			<!-- Datatables -->
 	    <script src="<?php echo base_url('assets') ?>/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -36,8 +37,17 @@ if($esg->content != 'login/index')
 	    <script src="<?php echo base_url('assets') ?>/vendors/pdfmake/build/pdfmake.min.js"></script>
 	    <script src="<?php echo base_url('assets') ?>/vendors/pdfmake/build/vfs_fonts.js"></script>
 	    <script src="<?php echo mod_js('admin/content','js/content.js') ?>"></script>
-	    <script src="<?php echo mod_js('admin/user') ?>"></script>
-			<?php
+	    <?php
+	    if($esg->content == 'user/list')
+	    {
+	     ?>
+	     <script src="<?php echo mod_js('admin/user') ?>"></script>
+	     <?php
+	    }else if($esg->content == 'absensi/index'){
+		    ?>
+				<script src="<?php echo mod_js('admin/absensi') ?>"></script>
+				<?php
+	    }
 			break;
 		case 'user/edit':
 			?>

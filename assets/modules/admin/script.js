@@ -140,7 +140,24 @@ class esg{
 			  {
 					form.reset();
 					$('#modal_form').modal('hide');
-					esg.reload_table();
+					if(esg.table !== ''){
+						esg.reload_table();
+					}
+					if(data.message!==''){
+						var a = $('.login_alert').find('.alert');
+						if(a!==''){
+							if(data.status) //if success close modal and reload ajax table
+						  {
+						  	a.removeClass('hide');
+						  	a.addClass('alert-success');
+						  	a.html('<strong>success! </strong> '+data.msg);
+						  }else{
+						  	a.removeClass('hide');
+						  	a.addClass('alert-danger');
+						  	a.html('<strong>danger! </strong> '+data.msg);
+						  }
+						}
+					}
 			  }else{
 			  	if(data.alert === 'danger'){
 			  		alert(data.alert+' '+data.message);

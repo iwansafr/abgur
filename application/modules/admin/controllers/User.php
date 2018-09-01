@@ -7,13 +7,13 @@ class User extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('admin_model');
-		if(empty($this->session->userdata('user_logged_in')))
+		if(empty($this->session->userdata(base_url().'_logged_in')))
 		{
 			$curent_url = base_url($_SERVER['PATH_INFO']);
 			$curent_url = urlencode($curent_url);
 			redirect(base_url('admin/login?redirect_to='.$curent_url));
 		}
-		$this->load->model('user_model');
+		// $this->load->model('user_model');
 		$this->load->helper('form');
 		$this->data['esg'] = $this->admin_model->esg();
 	}

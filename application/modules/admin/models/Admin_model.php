@@ -31,20 +31,12 @@ class Admin_model extends CI_Model
 	public function left_menu()
 	{
 		$this->esg['left_menu'] = array(
-			'home' => array(
-				'icon' => 'fa-home',
+			'absensi' => array(
+				'icon' => 'fa-sign-in',
 				'list' => array(
 					array(
-						'title' => 'content',
-						'link' => base_url('admin/content/list')
-					),
-					array(
-						'title' => 'category',
-						'link' => base_url('admin/category')
-					),
-					array(
-						'title' => 'tag',
-						'link' => base_url('admin/tag')
+						'title' => 'absensi',
+						'link' => base_url('admin/absensi')
 					)
 				)
 			),
@@ -132,7 +124,7 @@ class Admin_model extends CI_Model
 				if(decrypt($password, $data['password']))
 				{
 					$status = TRUE;
-					$this->session->set_userdata('user_logged_in', $data);
+					$this->session->set_userdata(base_url().'_logged_in', $data);
 				}else{
 					$data = array('msg'=>'wrong password','status'=>$status);
 				}

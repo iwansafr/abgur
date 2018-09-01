@@ -10,7 +10,6 @@ $(document).ready(function(){
 	esg.setTable(table);
 	esg.setUrl(_URL+'admin/user/ajax_edit');
 	esg.setForm($('#form')[0]);
-
 	$('#add_user').on('click', function(){
 		esg.form.reset();
 		$('#modal_form').modal('show'); // show bootstrap modal
@@ -27,7 +26,6 @@ $(document).ready(function(){
 	});
 	$('#btnSave').on('click',function(){
 		var id = $(esg.form).find('input[name=id]').val();
-		console.log(id);
 		esg.setUrl(_URL+'admin/user/ajax_edit/');
 		esg.save(id);
 		// save(_URL+'admin/user/ajax_edit', table, $('#form')[0]);
