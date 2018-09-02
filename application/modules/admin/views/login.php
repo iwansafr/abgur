@@ -57,9 +57,9 @@
                 <br />
 
                 <div>
-                	<img src="<?php echo base_url().'images/logo.png' ?>"><hr>
+                	<img src="<?php echo base_url().'images/smk_user.jpeg' ?>"><hr>
                   <!-- <h1><i class="fa fa-folder-o"></i> esoftgreat</h1> -->
-                  <p>©2016 All Rights Reserved. Supported By <a href="https://esoftgreat.com">esoftgreat</a>. Privacy and Terms</p>
+                  <p>Copyright © 2018 | SMK ASSA'IDIYAH KUDUS All Right Reserved | Powered by  <a href="https://esoftgreat.com">esoftgreat</a></p>
                 </div>
               </div>
             </form>
@@ -94,9 +94,9 @@
                 <br />
 
                 <div>
-                	<img src="<?php echo base_url().'images/logo.png' ?>"><hr>
+                	<img src="<?php echo base_url().'images/smk_user.jpeg' ?>"><hr>
                   <!-- <h1><i class="fa fa-folder-o"></i> esoftgreat</h1> -->
-                  <p>©2016 All Rights Reserved. Supported By <a href="https://esoftgreat.com">esoftgreat</a>. Privacy and Terms</p>
+                  <p>Copyright © 2018 | SMK ASSA'IDIYAH KUDUS All Right Reserved | Powered by  <a href="https://esoftgreat.com">esoftgreat</a></p>
                 </div>
               </div>
             </form>

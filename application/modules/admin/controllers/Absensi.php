@@ -6,6 +6,7 @@ class Absensi extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		// date_default_timezone_set('Asia/Jakarta');
 		$this->load->model('admin_model');
 		$this->load->model('absensi_model');
 		if(empty($this->session->userdata(base_url().'_logged_in')))

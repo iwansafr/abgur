@@ -127,7 +127,7 @@ class User extends CI_Controller
 		$this->session->sess_destroy();
 		delete_cookie('username');
 		delete_cookie('password');
-		redirect(base_url('admin'));
+		redirect(base_url('admin/absensi'));
 	}
 
 }

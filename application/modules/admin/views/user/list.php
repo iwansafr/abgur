@@ -21,7 +21,6 @@
     </div>
     <div class="x_content">
       <p class="text-muted font-13 m-b-30">
-        Responsive is an extension for DataTables that resolves that problem by optimising the table's layout for different screen sizes through the dynamic insertion and removal of columns from the table.
       </p>
       <button class="btn btn-success btn-sm" id="add_user"><i class="glyphicon glyphicon-plus"></i> Add User</button>
       <button class="btn btn-default btn-sm" id="reload_user"><i class="glyphicon glyphicon-refresh"></i> Reload</button>

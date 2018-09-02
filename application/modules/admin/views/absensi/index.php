@@ -31,10 +31,6 @@ $jadwal = array(
 				break;
 			}
 		}
-		if(empty($jamke))
-		{
-			echo '<label class="jamke"></label>';
-		}
 		echo '<br>';
 		$user_id = $this->session->userdata(base_url().'_logged_in')['id'];
 		?>

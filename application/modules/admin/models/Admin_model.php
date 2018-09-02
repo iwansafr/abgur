@@ -15,8 +15,10 @@ class Admin_model extends CI_Model
 			'title'          => 'esoftgreat',
 			'link'           => base_url(),
 			'developer'      => 'esoftgreat',
-			'developer_link' => 'https:/esoftgreat.com'
-
+			'developer_link' => 'https:/esoftgreat.com',
+			'image'          => base_url().'images/icon.png',
+			'description'    => 'Software Development',
+			'keyword'        => 'jasa pembuatan website, IT consultant, Web Design'
 		);
 	}
 
