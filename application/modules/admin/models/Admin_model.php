@@ -12,13 +12,13 @@ class Admin_model extends CI_Model
 	public function meta()
 	{
 		$this->esg['meta'] = array(
-			'title'          => 'esoftgreat',
+			'title'          => "SMK Assa'idiyah",
 			'link'           => base_url(),
 			'developer'      => 'esoftgreat',
 			'developer_link' => 'https:/esoftgreat.com',
 			'image'          => base_url().'images/icon.png',
-			'description'    => 'Software Development',
-			'keyword'        => 'jasa pembuatan website, IT consultant, Web Design'
+			'description'    => "e-absensi",
+			'keyword'        => "e-absensi SMK Assa'idiyah"
 		);
 	}
 
